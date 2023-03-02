@@ -9,6 +9,6 @@ describe("Files", () => {
       screen.getByRole("listitem", { name: /Employee Handbook/i })
     ).toBeVisible()
 
-    expect(screen.getAllByRole("listitem")).tohaveLength(5)
+    expect(screen.getAllByRole("listitem")).toHaveLength(5)
   })
 })
