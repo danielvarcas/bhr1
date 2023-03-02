@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react"
-import { Files } from "./Files"
+import { FileViewer } from "./FileViewer"
 
-describe("Files", () => {
+describe("FileViewer", () => {
   it("should display a list of root-level files and folders", () => {
-    render(<Files />)
+    render(<FileViewer />)
 
     expect(
       screen.getByRole("listitem", { name: /Employee Handbook/i })

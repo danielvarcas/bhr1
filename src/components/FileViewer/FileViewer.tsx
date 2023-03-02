@@ -1,15 +1,8 @@
 import React from "react"
 import { getFiles } from "../../utils/files"
+import { File } from "../../types/File"
 
-interface File {
-  id: string
-  type: "pdf" | "folder" | "doc" | "csv" | "mov"
-  name: string
-  added: string
-  files?: File[]
-}
-
-export function Files() {
+export function FileViewer() {
   const files: File[] = React.useMemo(() => {
     return getFiles()
   }, [getFiles])
@@ -20,7 +13,7 @@ export function Files() {
 
   return (
     <div>
-      <h2>Files</h2>
+      <h2>File Viewer</h2>
 
       <ul>
         {files.map((file) => (
