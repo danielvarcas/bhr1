@@ -1,24 +1,17 @@
 import React from "react"
-import { getFiles } from "../../utils/files"
 import { File } from "../../types/File"
 import { FileViewerItem } from "../FileViewerItem/FileViewerItem"
 
-export function FileViewer() {
-  const files: File[] = React.useMemo(() => {
-    return getFiles()
-  }, [getFiles])
+interface FileViewerProps {
+  files: File[]
+}
 
-  React.useEffect(() => {
-    console.log(files)
-  }, [files])
-
+export function FileViewer({ files }: FileViewerProps) {
   return (
     <div>
-      <h2>File Viewer</h2>
-
       <ul>
         {files.map((file) => (
-          <FileViewerItem file={file} />
+          <FileViewerItem key={file.id} file={file} />
         ))}
       </ul>
     </div>

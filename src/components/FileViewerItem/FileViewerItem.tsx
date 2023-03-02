@@ -13,7 +13,6 @@ export function FileViewerItem({ file }: FileViewerItemProps) {
 
   return (
     <li
-      key={file.id}
       aria-labelledby={`heading-${file.id}`}
       style={{
         listStyle: "none",

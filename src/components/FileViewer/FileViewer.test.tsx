@@ -1,14 +1,16 @@
 import { render, screen } from "@testing-library/react"
 import { FileViewer } from "./FileViewer"
+import { getFiles } from "../../utils/files"
+import { vi } from "vitest"
+
+vi.mock("../FileViewerItem/FileViewerItem")
+
+const files = getFiles()
 
 describe("FileViewer", () => {
-  it("should display a list of root-level files and folders", () => {
-    render(<FileViewer />)
+  it("should display a list of root-level files", () => {
+    render(<FileViewer files={files} />)
 
-    expect(
-      screen.getByRole("listitem", { name: /Employee Handbook/i })
-    ).toBeVisible()
-
-    expect(screen.getAllByRole("listitem")).toHaveLength(5)
+    expect(screen.getAllByText(/FileViewerItem Mock/i)).toHaveLength(5)
   })
 })
