@@ -1,3 +1,5 @@
+import React from "react"
+import { Link } from "react-router-dom"
 import { File } from "../../types/File"
 
 interface FileViewerItemProps {
@@ -5,6 +7,10 @@ interface FileViewerItemProps {
 }
 
 export function FileViewerItem({ file }: FileViewerItemProps) {
+  const isFolder = React.useMemo(() => {
+    return !!file.files?.length
+  }, [file.files])
+
   return (
     <li
       key={file.id}
@@ -18,9 +24,11 @@ export function FileViewerItem({ file }: FileViewerItemProps) {
     >
       <h3 id={`heading-${file.id}`}>{file.name}</h3>
 
+      {isFolder && <Link to="/test">View contents</Link>}
+
       <p>{file.type}</p>
       <p>{file.added}</p>
-      <p>Is folder: {!!file.files?.length ? "Yes" : "No"}</p>
+      <p>Is folder: {isFolder ? "Yes" : "No"}</p>
     </li>
   )
 }

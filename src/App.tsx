@@ -7,6 +7,7 @@ function App() {
       <h1>File Viewer</h1>
       <Routes>
         <Route path="/" element={<FileViewer />} />
+        <Route path="/test" element={<div>Test</div>} />
       </Routes>
     </div>
   )
