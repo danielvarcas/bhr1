@@ -8,8 +8,14 @@ interface FileViewerProps {
 }
 
 export function FileViewer({ files, setSelectedFile }: FileViewerProps) {
+  function clearSelectedFile() {
+    setSelectedFile(null)
+  }
+
   return (
     <div>
+      <button onClick={clearSelectedFile}>Clear selection</button>
+
       <ul>
         {files.map((file) => (
           <FileViewerItem
