@@ -1,4 +1,4 @@
-# bhr1
+# Folder Viewer app
 
 This is a React and TypeScript Project using Vite. The unit tests use Vitest.
 
