@@ -1,15 +1,18 @@
-import { Routes, Route } from "react-router-dom"
+import React from "react"
 import { Index } from "./pages/Index"
+import { getFiles } from "./utils/files"
+import { File } from "./types/File"
 
 function App() {
+  const files: File[] = React.useMemo(() => {
+    return getFiles()
+  }, [getFiles])
+
   return (
     <div>
       <h1>File Viewer</h1>
 
-      <Routes>
-        <Route path="/" element={<Index />} />
-        <Route path="/test" element={<div>Test</div>} />
-      </Routes>
+      <Index files={files} />
     </div>
   )
 }

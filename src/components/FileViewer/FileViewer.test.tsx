@@ -9,7 +9,7 @@ const files = getFiles()
 
 describe("FileViewer", () => {
   it("should display a list of root-level files", () => {
-    render(<FileViewer files={files} />)
+    render(<FileViewer files={files} setSelectedFile={vi.fn()} />)
 
     expect(screen.getAllByText(/FileViewerItem Mock/i)).toHaveLength(5)
   })

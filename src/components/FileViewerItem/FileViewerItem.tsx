@@ -4,12 +4,17 @@ import { File } from "../../types/File"
 
 interface FileViewerItemProps {
   file: File
+  setSelectedFile: React.Dispatch<React.SetStateAction<File | null>>
 }
 
-export function FileViewerItem({ file }: FileViewerItemProps) {
+export function FileViewerItem({ file, setSelectedFile }: FileViewerItemProps) {
   const isFolder = React.useMemo(() => {
     return !!file.files?.length
   }, [file.files])
+
+  function onClickViewFile() {
+    setSelectedFile(file)
+  }
 
   return (
     <li
@@ -23,7 +28,7 @@ export function FileViewerItem({ file }: FileViewerItemProps) {
     >
       <h3 id={`heading-${file.id}`}>{file.name}</h3>
 
-      {isFolder && <Link to="/test">View contents</Link>}
+      {isFolder && <button onClick={onClickViewFile}>View contents</button>}
 
       <p>{file.type}</p>
       <p>{file.added}</p>
